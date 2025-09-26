@@ -27,12 +27,12 @@ public class ProdutoPedido {
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "pedido_id")
-    private Pedido Pedido;
+    private Pedido pedido;
     @ManyToOne
     @JoinColumn(name = "produto_id")
     private Produto produto;
     private Double quantidade;
-    private Double valoProduto;
+    private Double valorProduto;
     private Double valorDesconto;
     private Double valorTotal;
     private String observacao;
