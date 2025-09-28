@@ -18,7 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "endereco")
+@Table(name = "produtos")
 public class Endereco {
 
     @Id
@@ -32,7 +32,7 @@ public class Endereco {
     private String cidade;
     private String uf;
 
-    @OneToOne(mappedBy = "endereco")
+    @OneToOne(mappedBy = "pedido")
     private Pedido pedido;
     
     

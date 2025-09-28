@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,16 +28,31 @@ public class ProdutoPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotNull(message = "O pedido vinculado é obrigatório")
     @ManyToOne
     @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
+    private Pedido Pedido;
+
+    @NotNull(message = "O produto é obrigatório")
     @ManyToOne
     @JoinColumn(name = "produto_id")
     private Produto produto;
-    private Double quantidade;
-    private Double valorProduto;
-    private Double valorDesconto;
-    private Double valorTotal;
-    private String observacao;
 
+    @NotNull(message = "A quantidade é obrigatória")
+    @Min(value = 1, message = "A quantidade deve ser maior que zero")
+    private Double quantidade;
+
+    @NotNull(message = "O valor do produto é obrigatório")
+    private Double valoProduto;
+
+    @NotNull(message = "O valor do desconto é obrigatório")
+    private Double valorDesconto;
+
+    @NotNull(message = "O valor total é obrigatório")
+    private Double valorTotal;
+
+    @Size(max = 255, message = "A observação não pode ter mais que 255 caracteres")
+    private String observacao;
+    
 }
