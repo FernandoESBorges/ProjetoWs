@@ -32,7 +32,7 @@ public class ProdutoPedido {
     @NotNull(message = "O pedido vinculado é obrigatório")
     @ManyToOne
     @JoinColumn(name = "pedido_id")
-    private Pedido Pedido;
+    private Pedido pedido;
 
     @NotNull(message = "O produto é obrigatório")
     @ManyToOne
@@ -44,7 +44,7 @@ public class ProdutoPedido {
     private Double quantidade;
 
     @NotNull(message = "O valor do produto é obrigatório")
-    private Double valoProduto;
+    private Double valorProduto;
 
     @NotNull(message = "O valor do desconto é obrigatório")
     private Double valorDesconto;
